@@ -1,4 +1,8 @@
 #include "raylib.h"
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+#include <unistd.h>
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -9,10 +13,16 @@ int main(void)
     //--------------------------------------------------------------------------------------
     const int screenWidth = 1500;
     const int screenHeight = 800;
+	int * ptr = malloc(sizeof(int) * 100);
+	srand(time(NULL));
+	int r = rand()%100;
+	for(int i = 0; i < 100; i++){
+		ptr[i] = r;
+		r = rand()%100;
+	}
 
     InitWindow(screenWidth, screenHeight, "Test");
 
-    Vector2 ballPosition = { (float)screenWidth/2, (float)screenHeight/2 };
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
@@ -31,11 +41,26 @@ int main(void)
             ClearBackground(BLACK);
 
             DrawText("Dem some rectangles", 10, 10, 20, DARKGRAY);
-            DrawRectangle(screenWidth/4*2 - 745, 545, 5, 255, WHITE);
-            DrawRectangle(screenWidth/4*2 - 735, 565, 5, 235, WHITE);
-            DrawRectangle(screenWidth/4*2 - 725, 585, 5, 215, GREEN);
-            DrawRectangle(screenWidth/4*2 - 715, 605, 5, 195, WHITE);
-            DrawRectangle(screenWidth/4*2 - 705, 625, 5, 175, RED);
+
+			for(int i = 0; i < 100; i++){
+				int start = 745;
+				for(int k = 0; k < 100; k++){
+					DrawRectangle(screenWidth/4*2 - start, screenHeight - ptr[k], 5, ptr[k], WHITE);
+					start -= 7;
+				}
+				for(int j = 0; j < 100; j++){
+					if(ptr[i] > ptr[i + 1]){
+						int temp = ptr[i + 1];
+						ptr[i + 1] = ptr[i];
+						ptr[i] = temp;
+
+					}
+
+
+				}
+			}
+
+			//The difference between columns is 7
 			//DrawRectangle(int posX, int posY, int width, int height, Color color)
 			/*                             ^                     ^
 			 * Increase with negative height change              |
