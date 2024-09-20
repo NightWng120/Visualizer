@@ -13,18 +13,18 @@ int main(void)
     //--------------------------------------------------------------------------------------
     const int screenWidth = 1500;
     const int screenHeight = 800;
-	int * ptr = malloc(sizeof(int) * 100);
+	int * ptr = malloc(sizeof(int) * 200);
 	srand(time(NULL));
-	int r = rand()%100;
-	for(int i = 0; i < 100; i++){
+	int r = rand()%200;
+	for(int i = 0; i < 200; i++){
 		ptr[i] = r;
-		r = rand()%100;
+		r = rand()%200;
 	}
 
     InitWindow(screenWidth, screenHeight, "Test");
 
 
-    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+    SetTargetFPS(30);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
     // Main game loop
@@ -42,13 +42,13 @@ int main(void)
 
             DrawText("Dem some rectangles", 10, 10, 20, DARKGRAY);
 
-			for(int i = 0; i < 100; i++){
-				int start = 745;
-				for(int k = 0; k < 100; k++){
-					DrawRectangle(screenWidth/4*2 - start, screenHeight - ptr[k], 5, ptr[k], WHITE);
-					start -= 7;
-				}
-				for(int j = 0; j < 100; j++){
+			int start = 745;
+			for(int k = 0; k < 200; k++){
+				DrawRectangle(screenWidth/4*2 - start, screenHeight - ptr[k], 5, ptr[k], WHITE);
+				start -= 7;
+			}
+			for(int i = 0; i < 200; i++){
+				for(int j = 0; j < 200; j++){
 					if(ptr[i] > ptr[i + 1]){
 						int temp = ptr[i + 1];
 						ptr[i + 1] = ptr[i];
