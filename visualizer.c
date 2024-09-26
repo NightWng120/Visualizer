@@ -71,6 +71,7 @@ int main(void)
 			//}
 			for(int k = 0; k < 100; k++){
 				if(loop){
+					//I could just add a function call here that chooses the desired sorting algorithm
 					if(ptr[length] > ptr[length + 1]){
 						int temp = ptr[length + 1];
 						ptr[length + 1] = ptr[length];
