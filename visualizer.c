@@ -35,7 +35,7 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Test");
 
 
-    SetTargetFPS(120);               // Set our game to run at 60 frames-per-second
+    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
     // Main game loop
@@ -83,8 +83,6 @@ int main(void)
 					}
 					loop = false;
 				}
-				printf("%d\n", length);
-				printf("%d\n", k);
 
 				if(sorted_array(ptr,100))
 					DrawRectangle(screenWidth/4*2 - start, screenHeight - ptr[k], 5, ptr[k], GREEN);
@@ -94,7 +92,6 @@ int main(void)
 					DrawRectangle(screenWidth/4*2 - start, screenHeight - ptr[k], 5, ptr[k], WHITE);
 				start -= 7;
 			}
-			printf("Look, they're E-Bumpin'!\n");
 
 			//The difference between columns is 7
 			//DrawRectangle(int posX, int posY, int width, int height, Color color)
