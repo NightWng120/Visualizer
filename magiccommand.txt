@@ -1,0 +1,5 @@
+Magic command that doesn't work in makefile, only command line.
+Haven't tried in bash script yet, probably would work
+
+gcc -Wall -Wextra -g $(pkg-config --cflags opengl glfw3) main.c \
+     $(pkg-config --libs opengl glfw3) -o prog
